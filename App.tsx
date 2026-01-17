@@ -14,16 +14,6 @@ import {
 
 const THEMES = {
   red: {
-    primary: 'bg-red-700',
-    secondary: 'bg-yellow-400',
-    border: 'border-yellow-400',
-    nav: 'bg-red-800',
-    accentText: 'text-yellow-300',
-    footer: 'bg-red-900',
-    chart: ['#DC2626', '#EAB308', '#EF4444', '#FACC15', '#B91C1C', '#D97706']
-  },
-
-  blue: {
     primary: 'bg-blue-800',
     secondary: 'bg-blue-100',
     border: 'border-blue-300',
