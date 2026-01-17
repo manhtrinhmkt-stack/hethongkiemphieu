@@ -14,15 +14,23 @@ import {
 
 const THEMES = {
   red: {
-    primary: 'bg-blue-800',
-    secondary: 'bg-blue-100',
-    border: 'border-blue-300',
-    nav: 'bg-blue-900',
-    accentText: 'text-blue-100',
-    footer: 'bg-blue-950',
-    chart: ['#1E40AF', '#2563EB', '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE']
+    primary: 'bg-red-700',
+    secondary: 'bg-yellow-400',
+    border: 'border-yellow-400',
+    nav: 'bg-red-800',
+    accentText: 'text-yellow-300',
+    footer: 'bg-red-900',
+    chart: ['#DC2626', '#EAB308', '#EF4444', '#FACC15', '#B91C1C', '#D97706']
   },
-
+  blue: {
+    primary: 'bg-blue-800',
+    secondary: 'bg-amber-400',
+    border: 'border-amber-400',
+    nav: 'bg-blue-900',
+    accentText: 'text-amber-200',
+    footer: 'bg-blue-950',
+    chart: ['#1E40AF', '#F59E0B', '#3B82F6', '#D97706', '#1E3A8A', '#B45309']
+  },
   green: {
     primary: 'bg-emerald-700',
     secondary: 'bg-slate-100',
@@ -32,8 +40,7 @@ const THEMES = {
     footer: 'bg-emerald-900',
     chart: ['#059669', '#10B981', '#047857', '#34D399', '#065F46', '#6EE7B7']
   }
-};
-
+} as const;
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'results' | 'manage'>('results');
@@ -54,6 +61,12 @@ const App: React.FC = () => {
   });
 
   const theme = THEMES[displaySettings.theme as keyof typeof THEMES] || THEMES.red;
+  type ThemeName = keyof typeof THEMES;
+
+const setTheme = (next: ThemeName) => {
+  setDisplaySettings((prev: any) => ({ ...prev, theme: next }));
+};
+
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -194,6 +207,38 @@ const App: React.FC = () => {
                 {currentTime.toLocaleDateString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' })}
               </span>
             </div>
+<div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-black/10 border border-white/10">
+  <span className="text-xs font-bold text-white/70 uppercase tracking-widest">Theme</span>
+
+  <div className="flex gap-2">
+    <button
+      type="button"
+      onClick={() => setTheme('red')}
+      className={`px-3 py-1.5 rounded-lg text-xs font-bold border border-white/10 transition-all
+        ${displaySettings.theme === 'red' ? 'bg-white/20 text-white' : 'bg-white/5 text-white/70 hover:text-white hover:bg-white/10'}`}
+    >
+      Red
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setTheme('blue')}
+      className={`px-3 py-1.5 rounded-lg text-xs font-bold border border-white/10 transition-all
+        ${displaySettings.theme === 'blue' ? 'bg-white/20 text-white' : 'bg-white/5 text-white/70 hover:text-white hover:bg-white/10'}`}
+    >
+      Blue
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setTheme('green')}
+      className={`px-3 py-1.5 rounded-lg text-xs font-bold border border-white/10 transition-all
+        ${displaySettings.theme === 'green' ? 'bg-white/20 text-white' : 'bg-white/5 text-white/70 hover:text-white hover:bg-white/10'}`}
+    >
+      Green
+    </button>
+  </div>
+</div>
 
             <nav className={`flex ${theme.nav} rounded-xl p-1 border border-white/5 shadow-inner`}>
               <button onClick={() => setActiveTab('results')} className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${activeTab === 'results' ? `${theme.secondary} text-slate-900 shadow-sm` : 'text-white/60 hover:text-white'}`}>
