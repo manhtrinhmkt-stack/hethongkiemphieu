@@ -22,15 +22,17 @@ const THEMES = {
     footer: 'bg-red-900',
     chart: ['#DC2626', '#EAB308', '#EF4444', '#FACC15', '#B91C1C', '#D97706']
   },
+
   blue: {
     primary: 'bg-blue-800',
-    secondary: 'bg-amber-400',
-    border: 'border-amber-400',
+    secondary: 'bg-blue-100',
+    border: 'border-blue-300',
     nav: 'bg-blue-900',
-    accentText: 'text-amber-200',
+    accentText: 'text-blue-100',
     footer: 'bg-blue-950',
-    chart: ['#1E40AF', '#F59E0B', '#3B82F6', '#D97706', '#1E3A8A', '#B45309']
+    chart: ['#1E40AF', '#2563EB', '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE']
   },
+
   green: {
     primary: 'bg-emerald-700',
     secondary: 'bg-slate-100',
@@ -41,6 +43,7 @@ const THEMES = {
     chart: ['#059669', '#10B981', '#047857', '#34D399', '#065F46', '#6EE7B7']
   }
 };
+
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'results' | 'manage'>('results');
